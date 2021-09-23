@@ -14,7 +14,12 @@
 							<li><a href="contact.php">Liên Hệ Chúng Tôi</a></li>
 							<li 
 							><a href="login.php">Đăng Nhập</a></li>
-                            <li><a href="login.php">Đăng xuất</a></li>
+							<?php
+								if(isset($_GET['action']) && $_GET['action']== 'logout'){
+									Session ::destroy();
+								}
+							?>
+                            <li><a href="?action=logout">Đăng xuất</a></li>
 						</ul>
 					</nav>
 				</div>
