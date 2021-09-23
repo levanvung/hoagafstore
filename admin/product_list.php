@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="w3layouts-glyphicon">		
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Danh sách thương hiệu sản phẩm
+                Danh sách sản phẩm
                 </div>
                 <div class="table-responsive">
                 <?php

@@ -1,7 +1,5 @@
 <?php
-/**
-*Session Class
-**/
+
 class Session{
  public static function init(){
   if (version_compare(phpversion(), '5.4.0', '<')) {
@@ -35,11 +33,23 @@ class Session{
     }
  }
 
+
  public static function checkLogin(){
     self::init();
     if (self::get("login")== true) {
      header("Location:index.php");
     }
+ }
+ public static function checkLogin_user(){
+    self::init();
+    $a=null;
+    if (self::get("user_login")== true) {
+      $a=1;
+      return $a;
+      header("Location:checkout.php");
+      }else{
+      return $a=0;
+   }
  }
 
  public static function destroy(){

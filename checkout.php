@@ -1,9 +1,9 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+    $filepath = realpath(dirname(__FILE__));
+    include_once ('class/user.php');
+
+	include_once ('lib/session.php');
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -87,6 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<li><a href="index.php">Trang Chủ</a><i>|</i></li>
 					<li>Kiểm Tra Giỏ Hàng</li>
 				</ul>
+
 			</div>
 		</div>
 		<!-- //banner_inner -->

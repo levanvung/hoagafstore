@@ -1,5 +1,9 @@
-<?php include_once '../lib/database.php'; ?>
-<?php include_once '../helper/formats.php'; ?>
+<?php 
+    $filepath = realpath(dirname(__FILE__));
+    include_once ($filepath.'../../lib/database.php');
+
+    include_once ($filepath.'../../helper/formats.php');
+    ?>
 <?php
 
     class slider{

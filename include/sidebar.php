@@ -1,3 +1,7 @@
+<?php
+    $filepath = realpath(dirname(__FILE__));
+	include_once ('lib/session.php');
+?>
 <div class="overlay overlay-contentpush" >
 					<button type="button" class="overlay-close"><i class="fa fa-times" aria-hidden="true"></i></button>
 
@@ -8,8 +12,9 @@
 							<li><a href="404.php">Team</a></li>
 							<li><a href="shop.php">Mua Ngay</a></li>
 							<li><a href="contact.php">Liên Hệ Chúng Tôi</a></li>
-							<li><a href="userlogin.php">Đăng Nhập</a></li>
-                            <li><a href="userlogin.php">Đăng Kí</a></li>
+							<li 
+							><a href="login.php">Đăng Nhập</a></li>
+                            <li><a href="login.php">Đăng xuất</a></li>
 						</ul>
 					</nav>
 				</div>
