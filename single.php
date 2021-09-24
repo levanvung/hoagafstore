@@ -1,9 +1,9 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php 
+	include_once 'class/product.php'; 
+	include_once('db/connect.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -86,8 +86,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="inner_breadcrumb_agileits_w3">
 
 				<ul class="short">
-					<li><a href="index.php">Home</a><i>|</i></li>
-					<li>Single</li>
+					<li><a href="index.php">Trang Chủ</a><i>|</i></li>
+					<li>Chi Tiết Sản Phẩm</li>
 				</ul>
 			</div>
 		</div>
@@ -96,31 +96,40 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- //banner -->
 	<!-- top Products -->
+	<?php 
+  if(isset($_GET['id'])){
+	  $id =$_GET['id'];
+  }else{
+	  $id = "";
+  }
+  $sql_chitiet = mysqli_query($con,"SELECT *FROM tbl_product WHERE product_id='$id'");
+  
+		?>
+
+		<?php 
+			while ($chitiet = mysqli_fetch_array($sql_chitiet)){
+		?>
 	<div class="ads-grid_shop">
+			
 		<div class="shop_inner_inf">
 			<div class="col-md-4 single-right-left ">
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 
 						<ul class="slides">
-							<li data-thumb="images/d2.jpg">
-								<div class="thumb-image"> <img src="images/d2.jpg" data-imagezoom="true" class="img-responsive"> </div>
+							<li data-thumb="admin/uploads/<?php echo $chitiet['product_image'] ?>">
+								<div class="thumb-image"> <img src="admin/uploads/<?php echo $chitiet['product_image'] ?>" data-imagezoom="true" class="img-responsive"> </div>
 							</li>
-							<li data-thumb="images/d1.jpg">
-								<div class="thumb-image"> <img src="images/d1.jpg" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
-							<li data-thumb="images/d3.jpg">
-								<div class="thumb-image"> <img src="images/d3.jpg" data-imagezoom="true" class="img-responsive"> </div>
-							</li>
+							
 						</ul>
 						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
 			<div class="col-md-8 single-right-left simpleCart_shelfItem">
-				<h3>Shoe Rock Vision(SRV) Sneakers (Blue)</h3>
-				<p><span class="item_price">$650</span>
-					<del>$1,199</del>
+				<h3><?php echo $chitiet ['product_name']; ?></h3>
+				<p><span class="item_price"><?php echo number_format( $chitiet['product_sale']); ?></span>
+					<del><?php echo number_format( $chitiet['product_price']); ?></del>
 				</p>
 				<div class="rating1">
 					<ul class="stars">
@@ -131,37 +140,32 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<li><a href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a></li>
 					</ul>
 				</div>
-				<div class="description">
-					<h5>Check delivery, payment options and charges at your location</h5>
-					<form action="#" method="post">
-						<input type="text" value="Enter pincode" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter pincode';}"
-						    required="">
-						<input type="submit" value="Check">
-					</form>
-				</div>
+				<br/>
 				<div class="color-quality">
 					<div class="color-quality-right">
-						<h5>Quality :</h5>
+						<h5>Color :</h5>
 						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-								<option value="null">5 Qty</option>
-								<option value="null">6 Qty</option> 
-								<option value="null">7 Qty</option>					
-								<option value="null">10 Qty</option>								
+								<option style ="background-color:red;"  value="null">Red</option>
+								<option  style ="background-color:green" value="null">Green</option> 
+								<option style ="background-color:purple" value="null">Purple</option>					
+								<option style ="background-color:yellow" value="null">Custom</option>								
+							</select>
+					</div>
+				</div>
+				<br />
+				<div class="color-quality">
+					<div class="color-quality-right">
+						<h5>Size :</h5>
+						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+								<option value="null">40</option>
+								<option value="null">41</option> 
+								<option value="null">42</option>					
+								<option value="null">43</option>								
 							</select>
 					</div>
 				</div>
 				<div class="occasional">
-					<h5>Types :</h5>
-					<div class="colr ert">
-						<label class="radio"><input type="radio" name="radio" checked=""><i></i>Casual Shoes</label>
-					</div>
-					<div class="colr">
-						<label class="radio"><input type="radio" name="radio"><i></i>Sneakers </label>
-					</div>
-					<div class="colr">
-						<label class="radio"><input type="radio" name="radio"><i></i>Formal Shoes</label>
-					</div>
-					<div class="clearfix"> </div>
+											
 				</div>
 				<div class="occasion-cart">
 					<div class="shoe single-item single_page_b">
@@ -207,33 +211,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 
 			</div>
-			<div class="clearfix"> </div>
+			<div class="clearfix"> </div>		
+			
 			<!--/tabs-->
+		
 			<div class="responsive_tabs">
 				<div id="horizontalTab">
 					<ul class="resp-tabs-list">
-						<li>Description</li>
-						<li>Reviews</li>
+						<!-- <li>Reviews</li> -->
 						<li>Information</li>
 					</ul>
 					<div class="resp-tabs-container">
 						<!--/tab_one-->
-						<div class="tab1">
-
-							<div class="single_page">
-								<h6>Lorem ipsum dolor sit amet</h6>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
-								<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
-							</div>
-						</div>
+						
 						<!--//tab_one-->
-						<div class="tab2">
+						<!-- <div class="tab2">
 
 							<div class="single_page">
 								<div class="bootstrap-tab-text-grids">
@@ -264,19 +256,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 
 							</div>
-						</div>
+						</div> -->
 						<div class="tab3">
 
 							<div class="single_page">
-								<h6>Shoe Rock Vision(SRV) Sneakers (Blue)</h6>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
-								<p class="para">Lorem ipsum dolor sit amet, consectetur adipisicing elPellentesque vehicula augue eget nisl ullamcorper, molestie
-									blandit ipsum auctor. Mauris volutpat augue dolor.Consectetur adipisicing elit, sed do eiusmod tempor incididunt
-									ut lab ore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco. labore et dolore
-									magna aliqua.</p>
+								<h6><?php echo $chitiet['product_name']; ?></h6>
+								<p><?php echo $chitiet['product_desc']; ?></p>
+								
 							</div>
 						</div>
 					</div>
@@ -491,11 +477,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 		</div>
+			
 	</div>
+	<?php
+			}
+	 ?>
 	<!-- //top products -->
 	<div class="mid_slider_w3lsagile">
 		<div class="col-md-3 mid_slider_text">
-			<h5>Some More Shoes</h5>
+			<h5>Nhiều Giày Hơn</h5>
 		</div>
 		<div class="col-md-9 mid_slider_info">
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -590,7 +580,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- /newsletter-->
 	<div class="newsletter_w3layouts_agile">
 		<div class="col-sm-6 newsleft">
-			<h3>Sign up for Newsletter !</h3>
+			<h3>Đăng kí để nhận thêm thông tin !</h3>
 		</div>
 		<div class="col-sm-6 newsright">
 			<form action="#" method="post">

@@ -110,18 +110,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <span>Sản phẩm</span>
                     </a>
                     <ul class="sub">
-                        <li><a class="active" href="product_add.php">Thêm sản phẩm</a></li>
-                        <li><a href="product_list.php">Tất cả sản phẩm</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-tasks"></i>
-                        <span>Sliders</span>
-                    </a>
-                    <ul class="sub">
-                        <li><a href="slider_add.php">Thêm slide</a></li>
-                        <li><a href="slider_list.php">Tất cả slide</a></li>
+                        <li><a href="product_add.php">Thêm sản phẩm</a></li>
+                        <li><a class="active" href="product_list.php">Tất cả sản phẩm</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -156,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <div class="w3layouts-glyphicon">		
             <div class="panel panel-default">
                 <div class="panel-heading">
-                Danh sách sản phẩm
+                Danh sách thương hiệu sản phẩm
                 </div>
                 <div class="table-responsive">
                 <?php
@@ -171,6 +161,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <th>Tên sản phẩm</th>
                         <th>Thương hiệu</th>
                         <th>Giá tiền</th>
+                        <th>Giá khuyến mại</th>
                         <th>Mô tả</th>
                         <th>Ảnh</th>
                         <th>Type</th>
@@ -191,6 +182,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <td><?php echo $result['product_name']; ?></td>
                         <td><?php echo $result['cat_name']; ?></td>
                         <td><?php echo $result['product_price']; ?></td>
+                        <td><?php echo $result['product_sale']; ?></td>
                         <td><?php echo $fm->textShorten($result['product_desc'],20); ?></td>
                         <td><img src="uploads/<?php echo $result['product_image']; ?>" width="50"></td>
                         <td><?php 

@@ -1,6 +1,11 @@
 <?php 
-	include_once('db/connect.php');	
-?>
+	include_once('db/connect.php');
+	include_once ('lib/session.php');
+    include_once ('class/user.php');
+    include_once ('class/product.php');
+    include_once ('class/slider.php');
+?>	
+
 <!DOCTYPE html>
 <html lang="zxx">
 

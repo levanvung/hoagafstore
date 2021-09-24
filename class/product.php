@@ -22,6 +22,8 @@
             $product_brand = mysqli_real_escape_string($this->db->link,$data['product_brand']);
             $product_desc = mysqli_real_escape_string($this->db->link,$data['product_desc']);
             $product_type = mysqli_real_escape_string($this->db->link,$data['product_type']);
+            $product_sale = mysqli_real_escape_string($this->db->link,$data['product_sale']);
+
 
 
             $permited = array('jpg','png','gif','jpeg');
@@ -33,12 +35,13 @@
             $file_ext = strtolower(end($div));
             $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image = "uploads/".$unique_image;
-            if($product_name == "" || $product_price == "" || $product_brand == "" || $product_desc == "" || $product_type == "" || $file_name == ""){
+            if($product_name == "" || $product_price == "" || $product_brand == "" || $product_desc == "" || $product_type == "" || $file_name ==""
+            || $product_sale == ""){
                 $alert = "<span class = 'error'>Bạn phải điền đủ các trường</span>";
                 return $alert;
             }else{
                 move_uploaded_file($file_temp,$uploaded_image);
-                $query = "INSERT INTO tbl_product(product_name,product_price,cat_id,product_desc,product_type,product_image) VALUES('$product_name','$product_price','$product_brand','$product_desc','$product_type','$unique_image') LIMIT 1";
+                $query = "INSERT INTO tbl_product(product_name,product_price,cat_id,product_desc,product_type,product_image,product_sale) VALUES('$product_name','$product_price','$product_brand','$product_desc','$product_type','$unique_image','$product_sale') LIMIT 1";
                 $result = $this->db->insert($query);
                 if($result){
                     $alert = "<span class = 'success'>Thêm thành công </span>";
@@ -115,6 +118,13 @@
                 $alert = "<span class = 'unsuccess'>Xóa thất bại</span>";
                 return $alert;
             }
+
+            
+        }
+        public function get_single($id){
+            $query = "SELECT tbl_product.*,tbl_category.cat_name FROM tbl_product INNER JOIN tbl_category ON tbl_product.cat_id = tbl_category.cat_id WHERE tbl_product.cat_id = '$id'";
+            $result = $this->db->select($query);
+            return $result;
 
         }
     } 

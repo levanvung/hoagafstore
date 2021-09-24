@@ -12,14 +12,22 @@
 							<li><a href="404.php">Team</a></li>
 							<li><a href="shop.php">Mua Ngay</a></li>
 							<li><a href="contact.php">Liên Hệ Chúng Tôi</a></li>
-							<li 
-							><a href="login.php">Đăng Nhập</a></li>
 							<?php
 								if(isset($_GET['action']) && $_GET['action']== 'logout'){
 									Session ::destroy();
 								}
 							?>
-                            <li><a href="?action=logout">Đăng xuất</a></li>
+							<li >
+								<?php 
+									$check_login = Session::get('$user_login');
+									if($check_login == false) {
+										echo '<a href="login.php">Đăng Nhập</a>';
+									}else{
+										echo '<a href="?action=logout">Đăng xuất</a>';
+									}
+								?>
+								
+							</li>
 						</ul>
 					</nav>
 				</div>

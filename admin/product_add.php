@@ -116,11 +116,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-tasks"></i>
-                        <span>Sliders</span>
+                        <span>Đơn hàng</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="slider_add.php">Thêm slide</a></li>
-                        <li><a href="slider_list.php">Tất cả slide</a></li>
+                        <li><a href="form_component.php">Form Elements</a></li>
+                        <li><a href="form_validation.php">Form Validation</a></li>
+						<li><a href="dropzone.php">Dropzone</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -163,6 +164,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Giá tiền</label>
                                     <input type="text" class="form-control" name="product_price" id="exampleInputEmail1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Giá Khuyến mại</label>
+                                    <input type="text" class="form-control" name="product_sale" id="exampleInputEmail1" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả</label>

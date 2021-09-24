@@ -46,7 +46,7 @@
             }
 
         }
-        public function login_user($data,$id){
+        public function login_user($data){
             $cus_email = mysqli_real_escape_string($this->db->link,$data['cus_email']);
             $cus_pass = mysqli_real_escape_string($this->db->link,md5($data['cus_pass']));
             if($cus_email == "" || $cus_pass == ""){
@@ -57,7 +57,7 @@
                 $check_result = $this->db->select($check);
                 if($check_result!=false){
                     $value= $check_result->fetch_assoc();
-                    Session :: set('user_login',true);
+                    Session :: set('$user_login',true);
                     Session :: set('id',$value['id']);
                     Session :: set('cus_email',$value['cus_email']);
                     Session :: set('cus_pass',$value['cus_pass']);

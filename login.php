@@ -7,7 +7,7 @@
 <?php
 	$user = new user();
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['signin'])){
-        $loginUser = $user->login_user($_POST,$id);
+        $loginUser = $user->login_user($_POST);
     }
 ?>
 <!DOCTYPE HTML>
@@ -49,7 +49,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div class="col-md-6 login-do">
 				<label class="hvr-shutter-in-horizontal login-sub">
-					<a href="?$id=1"><input type="submit" name="signin" value="login" ></a>
+					<input type="submit" name="signin" value="login" >
 					</label>
 					<p>Đăng ký tài khoản?</p>
 				<a href="signup.php" class="hvr-shutter-in-horizontal">Đăng ký</a>

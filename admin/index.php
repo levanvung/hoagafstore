@@ -1,6 +1,10 @@
 <?php
-	include '../lib/session.php';
-	Session :: checkSession();
+    $filepath = realpath(dirname(__FILE__));
+	include_once ('../lib/session.php');
+    Session::checkSession();
+    include_once ('../class/user.php');
+    include_once ('../class/product.php');
+    include_once ('../class/slider.php');
 ?>
 <?php
 	header('Cache-Control: no-cache , must-revalidate');
