@@ -196,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<li>Total <i>-</i> <span>$1405.00</span></li>
 						</ul>
 					</div>
-					<div class="col-md-8 address_form">
+					<!-- <div class="col-md-8 address_form">
 						<h4>Thêm sản Phẩm</h4>
 						<form action="payment.php" method="post" class="creditly-card-form agileinfo_form">
 							<section class="creditly-wrapper wrapper">
@@ -242,7 +242,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="checkout-right-basket">
 							<a href="payment.php">Thay đổi phương thức thanh toán </a>
 						</div>
-					</div>
+					</div> -->
 
 					<div class="clearfix"> </div>
 

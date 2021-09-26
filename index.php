@@ -83,51 +83,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<div class="clearfix"></div>
 			</div>
+			<?php
+			 	$sql_category = mysqli_query($con,"SELECT * FROM tbl_slider WHERE slider_type = '1' ORDER BY slider_id DESC");
+			 ?>
 			<!-- /slider -->
 			<div class="slider">
 				<div class="callbacks_container">
 					<ul class="rslides callbacks callbacks1" id="slider4">
-
+						<?php
+							while($row_slider = mysqli_fetch_array($sql_category)){
+						?> 
 						<li>
-							<div class="banner-top2">
+							<div style="background-image:url(admin/uploads/<?php echo $row_slider['slider_image']; ?>);" class="banner-top">
 								<div class="banner-info-wthree">
-									<h3>Nike</h3>
-									<p>Đồng Hành Cùng Bàn Trong Những Chuyến Đi.</p>
-
+									<h3><?php echo $row_slider['slider_title']; ?></h3>
+									<p><?php echo $row_slider['slider_content']; ?></p>
 								</div>
-
 							</div>
 						</li>
-						<li>
-							<div class="banner-top3">
-								<div class="banner-info-wthree">
-									<h3>Heels</h3>
-									<p>Nâng Niu Bàn Chân Của Bạn.</p>
-
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-top">
-								<div class="banner-info-wthree">
-									<h3>Sneakers</h3>
-									<p>Luôn Dõi Theo Bạn.</p>
-
-								</div>
-
-							</div>
-						</li>
-						<li>
-							<div class="banner-top1">
-								<div class="banner-info-wthree">
-									<h3>Adidas</h3>
-									<p>Những Bước Chạy Của Cuộc Sống.</p>
-
-								</div>
-
-							</div>
-						</li>
+						<?php 
+							}
+						?>
 					</ul>
 				</div>
 				<div class="clearfix"> </div>
@@ -144,6 +120,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<!-- //banner -->
 	<!-- /girds_bottom-->
+
 	<div class="grids_bottom">
 		<div class="style-grids">
 			<div class="col-md-6 style-grid style-grid-1">

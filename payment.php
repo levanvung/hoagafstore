@@ -1,9 +1,10 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+    $filepath = realpath(dirname(__FILE__));
+    include_once('./lib/database.php');
+    include_once('./helper/formats.php');
+    include_once('./lib/session.php');
+	Session:: checkSession_user();
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 

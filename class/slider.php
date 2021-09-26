@@ -19,6 +19,7 @@
 
             $slider_content = mysqli_real_escape_string($this->db->link,$data['slider_content']);
             $slider_type = mysqli_real_escape_string($this->db->link,$data['slider_type']);
+            $slider_title = mysqli_real_escape_string($this->db->link,$data['slider_title']);
 
 
             $permited = array('jpg','png','gif','jpeg');
@@ -30,12 +31,12 @@
             $file_ext = strtolower(end($div));
             $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image = "uploads/".$unique_image;
-            if( $slider_content == "" || $slider_type == "" || $file_name == ""){
+            if( $slider_content == "" || $slider_type == "" || $file_name == "" || $slider_title == "" ){
                 $alert = "<span class = 'error'>Bạn phải điền đủ các trường</span>";
                 return $alert;
             }else{
                 move_uploaded_file($file_temp,$uploaded_image);
-                $query = "INSERT INTO tbl_slider(slider_content,slider_type,slider_image) VALUES('$slider_content','$slider_type','$unique_image') LIMIT 1";
+                $query = "INSERT INTO tbl_slider(slider_content,slider_type,slider_image,slider_title) VALUES('$slider_content','$slider_type','$unique_image','$slider_title') LIMIT 1";
                 $result = $this->db->insert($query);
                 if($result){
                     $alert = "<span class = 'success'>Thêm thành công </span>";
@@ -61,6 +62,7 @@
         public function update_slider($data,$files,$id){
             $slider_content = mysqli_real_escape_string($this->db->link,$data['slider_content']);
             $slider_type = mysqli_real_escape_string($this->db->link,$data['slider_type']);
+            $slider_title = mysqli_real_escape_string($this->db->link,$data['slider_title']);
 
 
             $permited = array('jpg','png','gif','jpeg');
@@ -73,7 +75,7 @@
             $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image = "uploads/".$unique_image;
 
-            if( $slider_content == "" || $slider_type == "" || $file_name == ""){
+            if( $slider_content == "" || $slider_type == "" || $file_name == "" || $slider_title == "" ){
                 $alert = "<span class = 'error'>Không thể bỏ trống các thuộc tính</span>";
                 return $alert;
             }else{
@@ -86,9 +88,9 @@
                         $alert = "<span class = 'error'>Chi up dc cac file ". implode(', ',$permited)."</span>";
                         return $alert;
                     }
-                    $query = "UPDATE tbl_slider SET slider_type = '$slider_type',slider_content = '$slider_content',slider_image = '$unique_image' WHERE slider_id = '$id'";
+                    $query = "UPDATE tbl_slider SET slider_type = '$slider_type',slider_title = '$slider_title',slider_content = '$slider_content',slider_image = '$unique_image' WHERE slider_id = '$id'";
                 }else{
-                    $query = "UPDATE tbl_slider SET slider_type = '$slider_type',slider_content = '$slider_content' WHERE slider_id = '$id'";
+                    $query = "UPDATE tbl_slider SET slider_type = '$slider_type',slider_title = '$slider_title',slider_content = '$slider_content' WHERE slider_id = '$id'";
                 }
             }
             $result = $this->db->update($query);

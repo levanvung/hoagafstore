@@ -13,7 +13,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Minimal an Admin Panel Category Flat Bootstrap Responsive Website Template | Signin :: w3layouts</title>
+<title>Signin</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Minimal Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -51,8 +51,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<label class="hvr-shutter-in-horizontal login-sub">
 					<input type="submit" name="signin" value="login" >
 					</label>
-					<p>Đăng ký tài khoản?</p>
+					<p>Bạn chưa có tài khoản?</p>
 				<a href="signup.php" class="hvr-shutter-in-horizontal">Đăng ký</a>
+				</label>
+					<p>Bạn muốn tiếp tục xem sản phẩm?</p>
+				<a href="shop.php" class="hvr-shutter-in-horizontal">Quay lại cửa hàng</a>
 			</div>
 			<div class="clearfix"> </div>
 			</form>
