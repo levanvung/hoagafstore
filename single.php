@@ -1,14 +1,9 @@
-<?php 
-	include_once 'class/product.php'; 
-	include_once('db/connect.php');
-?>
-
 
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>| Single |</title>
+	<title>HOAGAF Shoes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -49,6 +44,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<?php
 					include 'include/sidebar.php'
+				?>
+				<?php
+					if(!isset($_GET['pro_id']) || $_GET['pro_id']==NULL){
+						echo "<script>window.location='404.php'</script>";
+					}else{
+						$id = $_GET['pro_id'];
+					}
+					if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['add_to_cart']){
+						$quantity = $_POST['quantity'];
+						$add_to_cart = $cart->add_to_cart($quantity,$id);
+					}
 				?>
 				<div class="mobile-nav-button">
 					<button id="trigger-overlay" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
@@ -91,23 +97,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</ul>
 			</div>
 		</div>
-		<!-- //banner_inner -->
 	</div>
-
-	<!-- //banner -->
-	<!-- top Products -->
-	<?php 
-  if(isset($_GET['id'])){
-	  $id =$_GET['id'];
-  }else{
-	  $id = "";
-  }
-  $sql_chitiet = mysqli_query($con,"SELECT *FROM tbl_product WHERE product_id='$id'");
-  
-		?>
-
-		<?php 
-			while ($chitiet = mysqli_fetch_array($sql_chitiet)){
+		<?php
+		 	$get_product = $product->show_product();
+			if($get_product){
+			 while($chitiet = $get_product->fetch_assoc()){
 		?>
 	<div class="ads-grid_shop">
 			
@@ -164,19 +158,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</select>
 					</div>
 				</div>
+				<br>
 				<div class="occasional">
 											
 				</div>
 				<div class="occasion-cart">
 					<div class="shoe single-item single_page_b">
-						<form action="#" method="post">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="add" value="1">
-							<input type="hidden" name="shoe_item" value="Chikku Loafers">
-							<input type="hidden" name="amount" value="405.00">
-							<input type="submit" name="submit" value="Add to cart" class="button add">
+						<form action="" method="post">
+							<div class="color-quality">
+								<div class="color-quality-right">
+									<h5>Số Lượng :</h5>
+									<input  style="width: 50px;" type="number" name="quantity" value="1" min="1" />
+								</div>
+							</div>
+							<br>
+							<div class="occasional"></div>
+							<input type="submit" name="add_to_cart" value="Thêm vào giỏ" class="button add">
 
-							<a href="#" data-toggle="modal" data-target="#myModal1"></a>
 						</form>
 
 					</div>
@@ -403,7 +401,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</ul>
 									</div>
 									<div class="shoe single-item hvr-outline-out">
-										<form action="#" method="post">
+										<form action="" method="post">
 											<input type="hidden" name="cmd" value="_cart">
 											<input type="hidden" name="add" value="1">
 											<input type="hidden" name="shoe_item" value="Running Shoes">
@@ -481,6 +479,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 	<?php
 			}
+		}
 	 ?>
 	<!-- //top products -->
 	<div class="mid_slider_w3lsagile">
@@ -601,9 +600,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 	<!-- js -->
 	<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
-	<!-- //js -->
-	<!-- cart-js -->
-	<script src="js/minicart.js"></script>
 	<script>
 		shoe.render();
 

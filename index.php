@@ -1,16 +1,9 @@
-<?php 
-	include_once('db/connect.php');
-	include_once ('lib/session.php');
-    include_once ('class/user.php');
-    include_once ('class/product.php');
-    include_once ('class/slider.php');
-?>	
 
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>| AV-Home |</title>
+	<title>| HOAGAF Shoes |</title>
 	<!-- custom-theme -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -83,26 +76,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				<div class="clearfix"></div>
 			</div>
-			<?php
-			 	$sql_category = mysqli_query($con,"SELECT * FROM tbl_slider WHERE slider_type = '1' ORDER BY slider_id DESC");
-			 ?>
+
 			<!-- /slider -->
 			<div class="slider">
 				<div class="callbacks_container">
 					<ul class="rslides callbacks callbacks1" id="slider4">
-						<?php
-							while($row_slider = mysqli_fetch_array($sql_category)){
-						?> 
+					<?php
+						$get_slider = $slider->show_slide();
+						if($get_slider){
+							while($result = $get_slider->fetch_assoc()){
+					?>
 						<li>
-							<div style="background-image:url(admin/uploads/<?php echo $row_slider['slider_image']; ?>);" class="banner-top">
+							<div style="background-image:url(admin/uploads/<?php echo $result['slider_image']; ?>);" class="banner-top">
 								<div class="banner-info-wthree">
-									<h3><?php echo $row_slider['slider_title']; ?></h3>
-									<p><?php echo $row_slider['slider_content']; ?></p>
+									<h3><?php echo $result['slider_title']; ?></h3>
+									<p><?php echo $result['slider_content']; ?></p>
 								</div>
 							</div>
 						</li>
 						<?php 
 							}
+						}
 						?>
 					</ul>
 				</div>

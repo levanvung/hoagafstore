@@ -1,13 +1,10 @@
-<?php 
-	include_once('db/connect.php');	
-?>
 
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
 
-	<title>Downy Shoes an Ecommerce Category Bootstrap Responsive Website Template | Shop :: w3layouts</title>
+	<title>HOAGAF Shoes</title>
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -103,9 +100,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			<!-- //tittle heading -->
 			<!-- product left -->
-			<?php
-			 	$sql_category = mysqli_query($con,"SELECT * FROM tbl_category ORDER BY cat_id DESC");
-			 ?>
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Tìm Kiêm..</h3>
@@ -132,19 +126,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<h3 class="agileits-sear-head">Giày Theo Sự Kiện</h3>
 					<ul>
 						<?php
-							while($row_category = mysqli_fetch_array($sql_category)){
-						?> 
+						$get_cate = $cat->show_cate();
+						if($get_cate){
+							while($result_cate = $get_cate->fetch_assoc()){
+						?>
 						<li>
 							
 							
 							<a href = "">
 							<i class="fas fa-archive"></i>
-							<span class="span"><?php echo $row_category['cat_name']; ?></span>
+							<span class="span"><?php echo $result_cate['cat_name']; ?></span>
 							
 							</a>
 						</li>
 							<?php
 							}
+						}
 							?>
 					</ul>
 				</div>
@@ -297,7 +294,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //product left -->
 			<!-- product right -->
 			
-			<?php $sql_category = mysqli_query($con,"SELECT * FROM tbl_product ORDER BY product_id DESC"); ?>
+
 			<div class="left-ads-display col-md-9">
 				<div class="wrapper_top_shop">
 					<div class="col-md-6 shop_left">
@@ -313,29 +310,31 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="product-sec1">
 						<!--/mens-->
 						<?php
-							while($row_category = mysqli_fetch_array($sql_category)){
-						?> 
+							$get_product = $product->get_single();
+							if($get_product){
+								while($result = $get_product->fetch_assoc()){
+						?>
 						<div class="col-md-4 product-men">
 							<div class="product-shoe-info shoe">
 								<div class="men-pro-item">
 									<div class="men-thumb-item">
-										<img src="admin/uploads/<?php echo $row_category['product_image']; ?>" alt="">
+										<img src="admin/uploads/<?php echo $result['product_image']; ?>" alt="">
 										<div class="men-cart-pro">
 											<div class="inner-men-cart-pro">
-												<a href="single.php?id=<?php echo $row_category['product_id']?>" class="link-product-add-cart">Xem Nhanh</a>
+												<a href="single.php?pro_id=<?php echo $result['product_id']?>" class="link-product-add-cart">Xem Nhanh</a>
 											</div>
 										</div>
 										<span class="product-new-top">New</span>
 									</div>
 									<div class="item-info-product">
 										<h4>
-											<a href="single.php"><?php echo $row_category['product_name']; ?> </a>
+											<a href="single.php"><?php echo $result['product_name']; ?> </a>
 										</h4>
 										<div class="info-product-price">
 											<div class="grid_meta">
 												<div class="product_price">
 													<div class="grid-price ">
-														<span class="money "><?php echo number_format( $row_category['product_sale']); ?><span><del><?php echo number_format( $row_category['product_price']); ?></span></span>
+														<span class="money "><?php echo number_format( $result['product_sale']); ?><span><del><?php echo number_format( $result['product_price']); ?></span></span>
 													</div>
 												</div>
 												<ul class="stars">
@@ -365,6 +364,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 						<?php
+								}
 							}
 							?>
 					

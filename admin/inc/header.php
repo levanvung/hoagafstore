@@ -1,3 +1,17 @@
+<?php
+    $filepath = realpath(dirname(__FILE__));
+	include_once ('../lib/session.php');
+    Session::checkSession();
+    include_once ('../class/user.php');
+    include_once ('../class/product.php');
+    include_once ('../class/slider.php');
+?>
+<?php
+	header('Cache-Control: no-cache , must-revalidate');
+	header('Pragam: no-cache');
+	header('Expires: Sat,26 Jul 1997 05:00:00 GMT');
+	header('Cache-Control: max-age=25920000');
+?>
 <!DOCTYPE html>
 <head>
 <title>HOAGAF</title>

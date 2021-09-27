@@ -50,7 +50,7 @@
 
         }
         public function show_slide(){
-            $query = "SELECT tbl_slider.* FROM tbl_slider ORDER BY tbl_slider.slider_id DESC";
+            $query = "SELECT tbl_slider.* FROM tbl_slider ORDER BY slider_id DESC";
             $result = $this->db->select($query);
             return $result;
         }
@@ -75,7 +75,7 @@
             $unique_image = substr(md5(time()),0,10).'.'.$file_ext;
             $uploaded_image = "uploads/".$unique_image;
 
-            if( $slider_content == "" || $slider_type == "" || $file_name == "" || $slider_title == "" ){
+            if( $slider_content == "" || $slider_type == "" || $slider_title == "" ){
                 $alert = "<span class = 'error'>Không thể bỏ trống các thuộc tính</span>";
                 return $alert;
             }else{

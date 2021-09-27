@@ -1,14 +1,9 @@
-<?php
-    $filepath = realpath(dirname(__FILE__));
-    include_once ('class/user.php');
 
-	include_once ('lib/session.php');
-?>
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>HOAGAF Shop</title>
+	<title>HOAGAF Shoes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -109,7 +104,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<th>Loại sản Phẩm</th>
 								<th>Số Lượng</th>
 								<th>Tên Sản Phẩn</th>
-
 								<th>Giá Tiền</th>
 								<th>Xóa</th>
 							</tr>

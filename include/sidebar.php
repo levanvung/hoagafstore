@@ -1,8 +1,30 @@
+
 <?php
     $filepath = realpath(dirname(__FILE__));
 	include_once ('lib/session.php');
-
+    Session::init();
+    include_once ('class/user.php');
+    include_once ('class/product.php');
+    include_once ('class/category.php');
+    include_once ('class/slider.php');
+	include_once ('lib/database.php');
+	include_once ('class/cart.php');
+	include_once ('helper/formats.php');
 ?>
+<?php
+	$cat = new category();
+	$cart = new cart();
+	$user = new user();
+	$slider = new slider();
+	$product = new product();
+?>
+<?php
+	header('Cache-Control: no-cache , must-revalidate');
+	header('Pragam: no-cache');
+	header('Expires: Sat,26 Jul 1997 05:00:00 GMT');
+	header('Cache-Control: max-age=25920000');
+?>
+
 <div class="overlay overlay-contentpush" >
 					<button type="button" class="overlay-close"><i class="fa fa-times" aria-hidden="true"></i></button>
 

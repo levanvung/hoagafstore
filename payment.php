@@ -1,15 +1,9 @@
-<?php
-    $filepath = realpath(dirname(__FILE__));
-    include_once('./lib/database.php');
-    include_once('./helper/formats.php');
-    include_once('./lib/session.php');
-	Session:: checkSession_user();
-?>
+
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
-	<title>HoaGaf Shop</title>
+	<title>HOAGAF Shoes</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Downy Shoes Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 

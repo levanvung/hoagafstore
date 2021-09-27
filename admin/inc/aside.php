@@ -46,8 +46,8 @@
                         <span>Quản lý khách hàng</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="mail.php">Chỉnh sửa thông tin</a></li>
-                        <li><a href="mail_compose.php">Xóa khách hàng</a></li>
+                        <li><a href="customer_list.php">Danh sách khách hàng</a></li>
+
                     </ul>
                 </li>
 
