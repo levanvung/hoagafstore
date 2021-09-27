@@ -96,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<h3>Kiểm<span> Tra</span></h3>
 
 				<div class="checkout-right">
-					<h4>Sản Phẩm của bạn: <span>3 sản phẩm</span></h4>
+					<!-- <h4>Sản Phẩm của bạn: <span>3 sản phẩm</span></h4> -->
 					<table class="timetable_sub">
 						<thead>
 							<tr>
@@ -109,21 +109,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</tr>
 						</thead>
 						<tbody>
+							<?php
+								$get_pr_cart = $cart->get_pr_cart();
+								if($get_pr_cart){
+									$i=0;
+									while($result = $get_pr_cart->fetch_assoc()){
+										$i++;
+							?>
 							<tr class="rem1">
-								<td class="invert">1</td>
-								<td class="invert-image"><a href="single.php"><img src="images/s1.jpg" alt=" " class="img-responsive"></a></td>
+								<td class="invert">$i</td>
+								<td class="invert-image"><a href="single.php"><img src="admin/uploads/<?php echo $result['product_image']; ?>" alt=" " class="img-responsive"></a></td>
 								<td class="invert">
 									<div class="quantity">
 										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value"><span>1</span></div>
-											<div class="entry value-plus active">&nbsp;</div>
+											<input type="number" name="quantity" style="width:50px" value="<?php echo $result['quantity']; ?>">
 										</div>
 									</div>
 								</td>
-								<td class="invert">Bella Toes</td>
+								<td class="invert"><?php echo $result['product_name']; ?></td>
 
-								<td class="invert">$675.00</td>
+								<td class="invert"><?php echo $result['product_price']; ?></td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close1"> </div>
@@ -131,51 +136,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 								</td>
 							</tr>
-							<tr class="rem2">
-								<td class="invert">2</td>
-								<td class="invert-image"><a href="single.php"><img src="images/s5.jpg" alt=" " class="img-responsive"></a></td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value"><span>1</span></div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Red Bellies</td>
-
-								<td class="invert">$325.00</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close2"> </div>
-									</div>
-
-								</td>
-							</tr>
-							<tr class="rem3">
-								<td class="invert">3</td>
-								<td class="invert-image"><a href="single.php"><img src="images/s2.jpg" alt=" " class="img-responsive"></a></td>
-								<td class="invert">
-									<div class="quantity">
-										<div class="quantity-select">
-											<div class="entry value-minus">&nbsp;</div>
-											<div class="entry value"><span>1</span></div>
-											<div class="entry value-plus active">&nbsp;</div>
-										</div>
-									</div>
-								</td>
-								<td class="invert">Chikku Loafers</td>
-
-								<td class="invert">$405.00</td>
-								<td class="invert">
-									<div class="rem">
-										<div class="close3"> </div>
-									</div>
-
-								</td>
-							</tr>
-
+							<?php
+							    }
+						    } 
+							?>
 						</tbody>
 					</table>
 				</div>
@@ -183,11 +147,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-4 checkout-left-basket">
 						<h4><a href =index.php> Thanh Toán</a></h4>
 						<ul>
-							<li>Product1 <i>-</i> <span>$675.00 </span></li>
-							<li>Product2 <i>-</i> <span>$325.00 </span></li>
-							<li>Product3 <i>-</i> <span>$405.00 </span></li>
+							<?php
+								$get_pr_cart = $cart->get_pr_cart();
+								if($get_pr_cart){
+									$subtotal = 0;
+									$i=0;
+									while($result = $get_pr_cart->fetch_assoc()){
+										$i++;
+							?>
+							<li><?php echo $result['product_name'] ?><i>-</i> <span><?php echo number_format($result['product_price']); ?></span></li>
+							<?php
+							    }
+						    } 
+							?>
 							<li>Total Service Charges <i>-</i> <span>$55.00</span></li>
 							<li>Total <i>-</i> <span>$1405.00</span></li>
+
 						</ul>
 					</div>
 					<!-- <div class="col-md-8 address_form">

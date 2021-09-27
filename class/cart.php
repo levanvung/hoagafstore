@@ -35,5 +35,11 @@
                 header("Location:404.php");
             }
         }
+        public function get_pr_cart(){
+            $session_id = session_id();
+            $query = "SELECT * FROM tbl_cart WHERE ses_id = '$session_id'";
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
 ?>
