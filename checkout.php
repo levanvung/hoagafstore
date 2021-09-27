@@ -112,9 +112,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<?php
 								$get_pr_cart = $cart->get_pr_cart();
 								if($get_pr_cart){
+									$subtotal = 0;
 									$i=0;
 									while($result = $get_pr_cart->fetch_assoc()){
 										$i++;
+										$subtotal = $result['quantity']*$result['product_price'];
 							?>
 							<tr class="rem1">
 								<td class="invert">$i</td>
@@ -128,7 +130,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</td>
 								<td class="invert"><?php echo $result['product_name']; ?></td>
 
-								<td class="invert"><?php echo $result['product_price']; ?></td>
+								<td class="invert"><?php echo number_format($subtotal); ?></td>
 								<td class="invert">
 									<div class="rem">
 										<div class="close1"> </div>
@@ -150,19 +152,30 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<?php
 								$get_pr_cart = $cart->get_pr_cart();
 								if($get_pr_cart){
+									$COD = 30000;
 									$subtotal = 0;
+									$Total = 0;
+									
 									$i=0;
+
 									while($result = $get_pr_cart->fetch_assoc()){
 										$i++;
+										$subtotal = $result['quantity']*$result['product_price'];
+										
 							?>
-							<li><?php echo $result['product_name'] ?><i>-</i> <span><?php echo number_format($result['product_price']); ?></span></li>
+							<li><?php echo $result['product_name'] ?><i>-</i> <span><?php echo number_format($subtotal); ?></span></li>
 							<?php
+								$Total += $subtotal;
+								$bill=$Total+$COD;
 							    }
-						    } 
-							?>
-							<li>Total Service Charges <i>-</i> <span>$55.00</span></li>
-							<li>Total <i>-</i> <span>$1405.00</span></li>
+							?>							
+							<li>Số tiền đơn hàng <i>-</i> <span><?php echo number_format($Total); ?></span></li>
+							<li>Ship COD <i>-</i> <span><?php echo number_format($COD); ?></span></li>
 
+							<li>Tổng tiền đơn hàng <i>-</i> <span><?php echo number_format($bill); ?></span></li>
+							<?php 
+								}
+							?>
 						</ul>
 					</div>
 					<!-- <div class="col-md-8 address_form">

@@ -47,6 +47,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<?php
 					include 'include/sidebar.php'
 				?>
+                <?php
+					if(!isset($_GET['cat_id']) || $_GET['cat_id']==NULL){
+						echo "<script>window.location='404.php'</script>";
+					}else{
+						$id_cat = $_GET['cat_id'];
+					}
+				?>
 				<div class="mobile-nav-button">
 					<button id="trigger-overlay" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
 				</div>
@@ -310,7 +317,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="product-sec1">
 						<!--/mens-->
 						<?php
-							$get_product = $product->show_product_user();
+							$get_product = $product->show_product_user_cate($id_cat);
 							if($get_product){
 								while($result = $get_product->fetch_assoc()){
 						?>

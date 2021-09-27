@@ -49,7 +49,6 @@
 										echo '<a href="login.php">Đăng nhập</a>';
 									}
 								?>
-								
 							</li>
 						</ul>
 					</nav>
