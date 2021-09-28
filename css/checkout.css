@@ -574,5 +574,12 @@ button.submit.check_out {
 	margin-bottom: 2em;
 }
 
-
+.thanhcong{
+	color:green;
+	font-size:18px;
+}
+.thatbai{
+	color:red;
+	font-size:18px;
+}
 /*-- //Pay-page --*/

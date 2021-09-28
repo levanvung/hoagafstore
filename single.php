@@ -18,6 +18,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 	</script>
 	<!-- //custom-theme -->
+
 	<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="css/shop.css" type="text/css" media="screen" property="" />
 	<link href="css/style7.css" rel="stylesheet" type="text/css" media="all" />
@@ -28,6 +29,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<!-- font-awesome-icons -->
 	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"/>
 	<!-- //font-awesome-icons -->
 	<link href="//fonts.googleapis.com/css?family=Montserrat:100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800"
 	    rel="stylesheet">
@@ -62,7 +64,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="shoecart shoecart2 cart cart box_1">
-						<form action="#" method="post" class="last">
+						<form action="checkout.php" method="post" class="last">
 							<input type="hidden" name="cmd" value="_cart">
 							<input type="hidden" name="display" value="1">
 							<button class="top_shoe_cart" type="submit" name="submit" value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i></button>
@@ -174,12 +176,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<br>
 							<div class="occasional"></div>
 							<input type="submit" name="add_to_cart" value="Thêm vào giỏ" class="button add">
-
+							
 						</form>
+						<br/>
+						<i style="font-size:16px" class="fa fa-envelope-square" ></i> 
+						 <?php 
+						
+							if(isset($add_to_cart)){
+								echo '<span style="color:Red;font-size:19px;">Thông Báo : Sản Phẩm Đã Được Thêm Vào Giỏ Hàng!!</span>';
+							}
+							
+							 ?>
+
 
 					</div>
 
 				</div>
+			
 				<ul class="social-nav model-3d-0 footer-social social single_page">
 					<li class="share">Share On : </li>
 					<li>

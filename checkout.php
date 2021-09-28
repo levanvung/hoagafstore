@@ -1,4 +1,17 @@
-
+<?php
+					include 'include/sidebar.php'
+?>
+<?php 
+				if(isset($_GET['cartid'])){
+					$cartid = $_GET['cartid'];
+					$deletecart = $cart->delete_product_cart($cartid);
+				}
+				if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])){
+				$cart_id = $_POST['cart_id'];
+				$quantity = $_POST['quantity'];
+				$update_to_quantity = $cart->update_to_quantity($quantity,$cart_id);
+			}
+?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -40,9 +53,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="logo inner_page_log">
 					<h1><a class="navbar-brand" href="index.php"><span>HOAGAF</span> <i>Shoes</i></a></h1>
 				</div>
-				<?php
-					include 'include/sidebar.php'
-				?>
 				<div class="mobile-nav-button">
 					<button id="trigger-overlay" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
 				</div>
@@ -90,10 +100,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 	<!-- //banner -->
 	<!-- top Products -->
+
 	<div class="ads-grid_shop">
 		<div class="shop_inner_inf">
 			<div class="privacy about">
 				<h3>Kiểm<span> Tra</span></h3>
+				<?php
+					if(isset($update_to_quantity)){
+						echo $update_to_quantity;
+					}
+				 ?>
+				 	<?php
+					if(isset($deletecart)){
+						echo $deletecart;
+					}
+				 ?>
 
 				<div class="checkout-right">
 					<!-- <h4>Sản Phẩm của bạn: <span>3 sản phẩm</span></h4> -->
@@ -119,12 +140,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										$subtotal = $result['quantity']*$result['product_price'];
 							?>
 							<tr class="rem1">
-								<td class="invert">$i</td>
+								<td class="invert"><?php echo $i?></td>
 								<td class="invert-image"><a href="single.php"><img src="admin/uploads/<?php echo $result['product_image']; ?>" alt=" " class="img-responsive"></a></td>
 								<td class="invert">
 									<div class="quantity">
 										<div class="quantity-select">
-											<input type="number" name="quantity" style="width:50px" value="<?php echo $result['quantity']; ?>">
+											<form action="" method="post">
+											<input type="hidden" name="cart_id" value="<?php echo $result['cart_id']; ?>"/>	
+											<input type="number" name="quantity" min="1" style="width:50px" value="<?php echo $result['quantity']; ?>">
+											<input type="submit" name="submit"  value="Update"/>
+											</form>
 										</div>
 									</div>
 								</td>
@@ -133,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<td class="invert"><?php echo number_format($subtotal); ?></td>
 								<td class="invert">
 									<div class="rem">
-										<div class="close1"> </div>
+										<a href ="?cartid=<?php  echo $result['cart_id']; ?>">Xoa </a> 
 									</div>
 
 								</td>
@@ -144,6 +169,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							?>
 						</tbody>
 					</table>
+					
+				
 				</div>
 				<div class="checkout-left">
 					<div class="col-md-4 checkout-left-basket">
@@ -169,16 +196,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								$bill=$Total+$COD;
 							    }
 							?>							
-							<li>Số tiền đơn hàng <i>-</i> <span><?php echo number_format($Total); ?></span></li>
-							<li>Ship COD <i>-</i> <span><?php echo number_format($COD); ?></span></li>
+							<li>Số tiền đơn hàng  <span><?php echo number_format($Total); ?></span></li>
+							<li>Ship COD  <span><?php echo number_format($COD); ?></span></li>
 
-							<li>Tổng tiền đơn hàng <i>-</i> <span><?php echo number_format($bill); ?></span></li>
+							<li>Tổng tiền đơn hàng  <span><?php echo number_format($bill); ?></span></li>
 							<?php 
 								}
 							?>
 						</ul>
 					</div>
-					<!-- <div class="col-md-8 address_form">
+					<div class="col-md-8 address_form">
 						<h4>Thêm sản Phẩm</h4>
 						<form action="payment.php" method="post" class="creditly-card-form agileinfo_form">
 							<section class="creditly-wrapper wrapper">
@@ -217,14 +244,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																					</select>
 										</div>
 									</div>
-									<button class="submit check_out">Giao hàng đến địa chỉ này</button>
+									<button class=" check_out">Giao hàng đến địa chỉ này</button>
 								</div>
 							</section>
 						</form>
 						<div class="checkout-right-basket">
 							<a href="payment.php">Thay đổi phương thức thanh toán </a>
 						</div>
-					</div> -->
+					</div>
 
 					<div class="clearfix"> </div>
 
