@@ -17,6 +17,7 @@
 	$user = new user();
 	$slider = new slider();
 	$product = new product();
+
 ?>
 <?php
 	header('Cache-Control: no-cache , must-revalidate');

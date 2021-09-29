@@ -115,5 +115,8 @@
             }
 
         }
+        public function custommer(){
+            
+        }
     } 
 ?>
