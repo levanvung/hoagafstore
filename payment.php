@@ -1,4 +1,6 @@
-
+<?php
+					include 'include/sidebar.php'
+				?>
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -93,7 +95,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 											<div class="check_box_one cashon_delivery">
 												<label class="anim">
 																<input type="checkbox" class="checkbox">
-																 <span> We also accept Credit/Debit card on delivery. Please Check with the agent.</span> 
+																 <span ><a  style="color:black;"href="offlinepayment.php">Thanh Toán Khi Nhận Hàng</a></span> 
+
+																 
 															</label>
 											</div>
 

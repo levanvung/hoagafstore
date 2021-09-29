@@ -174,7 +174,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="checkout-left">
 					<div class="col-md-4 checkout-left-basket">
-						<h4><a href =index.php> Thanh Toán</a></h4>
+						<h4><a href =payment.php> Thanh Toán</a></h4>
 						<ul>
 							<?php
 								$get_pr_cart = $cart->get_pr_cart();

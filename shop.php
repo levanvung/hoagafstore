@@ -298,12 +298,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="left-ads-display col-md-9">
 				<div class="wrapper_top_shop">
 					<div class="col-md-6 shop_left">
-						<img src="images/banner3.jpg" alt="">
-						<h6>40% off</h6>
+					<video  style="width:90%;"  autoplay >
+					
+    					<source  src="nike1.mp4">
+						
+					</video>
 					</div>
 					<div class="col-md-6 shop_right">
-						<img src="images/banner2.jpg" alt="">
-						<h6>50% off</h6>
+						<video  style="width:90%" autoplay >
+    					<source src="puma2.mp4" >
+						</video>
 					</div>
 					<div class="clearfix"></div>
 					<!-- product-sec1 -->
@@ -381,12 +385,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 					<!-- //product-sec1 -->
 					<div class="col-md-6 shop_left shp">
-						<img src="images/banner4.jpg" alt="">
-						<h6>21% off</h6>
+					<video style="width:90%;"  autoplay >					
+    					<source  src="airmax.mp4">
+					</video>
 					</div>
 					<div class="col-md-6 shop_right shp">
-						<img src="images/banner1.jpg" alt="">
-						<h6>31% off</h6>
+					<video style="width:90%;"  autoplay >					
+    					<source  src="giay.mp4">
+					</video>
 					</div>
 					<div class="clearfix"></div>
 				</div>

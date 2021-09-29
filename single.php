@@ -177,7 +177,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="occasional"></div>
 							<input type="submit" name="add_to_cart" value="Thêm vào giỏ" class="button add">
 							
+		
 						</form>
+						<br/>
+						<input style="background-color:pink;" type="submit" name="add_to_love" value="Yêu Thích " class="button add">
 						<br/>
 						<i style="font-size:16px" class="fa fa-envelope-square" ></i> 
 						 <?php 
